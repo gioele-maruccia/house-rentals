@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import {useState} from "react";
-import {createUserWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
 import './App.css';
 import {auth} from "./firebase-config";
 
@@ -11,9 +11,19 @@ function App() {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
+    const [user, setUser] = useState({});
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
+
     const register = async () => {
         try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                registerEmail,
+                registerPassword
+            );
             console.log(user);
         } catch (error) {
             console.log(error.message);
@@ -21,11 +31,20 @@ function App() {
     };
 
     const login = async () => {
-
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
     const logout = async () => {
-
+        await signOut(auth);
     };
 
     return (
@@ -58,10 +77,11 @@ function App() {
                        }}
                 />
 
-                <button> Login</button>
+                <button onClick={login}> Login</button>
             </div>
             <h4> User Logged In: </h4>
-            <button> Sign Out</button>
+            {user?.email}
+            <button onClick={logout}> Sign Out</button>
         </div>
     );
 }
