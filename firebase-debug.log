@@ -1,0 +1,74 @@
+[debug] [2022-03-31T12:45:45.730Z] ----------------------------------------------------------------------
+[debug] [2022-03-31T12:45:45.731Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\gioel\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-03-31T12:45:45.732Z] CLI Version:   10.5.0
+[debug] [2022-03-31T12:45:45.732Z] Platform:      win32
+[debug] [2022-03-31T12:45:45.732Z] Node Version:  v16.14.2
+[debug] [2022-03-31T12:45:45.732Z] Time:          Thu Mar 31 2022 14:45:45 GMT+0200 (Central European Summer Time)
+[debug] [2022-03-31T12:45:45.732Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-31T12:45:45.734Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-03-31T12:45:45.788Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-31T12:45:45.788Z] > authorizing via signed-in user (gioelemaruccia8@gmail.com)
+[debug] [2022-03-31T12:45:45.788Z] [iam] checking project case-vacanze-930c3 for permissions ["firebase.projects.get"]
+[debug] [2022-03-31T12:45:45.789Z] > refreshing access token with scopes: []
+[debug] [2022-03-31T12:45:45.789Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-31T12:45:45.943Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Thu, 31 Mar 2022 12:45:40 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-31T12:45:45.951Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/case-vacanze-930c3:testIamPermissions [none]
+[debug] [2022-03-31T12:45:45.952Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/case-vacanze-930c3:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-03-31T12:45:46.258Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-03-31T12:45:46.258Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-03-31T12:45:46.744Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/case-vacanze-930c3:testIamPermissions 200
+[debug] [2022-03-31T12:45:46.744Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/case-vacanze-930c3:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-03-31T12:45:46.745Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3 [none]
+[debug] [2022-03-31T12:45:47.058Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3 200
+[debug] [2022-03-31T12:45:47.058Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3 {"projectId":"case-vacanze-930c3","projectNumber":"1092606466367","displayName":"case-vacanze","name":"projects/case-vacanze-930c3","resources":{"hostingSite":"case-vacanze-930c3","storageBucket":"case-vacanze-930c3.appspot.com","locationId":"europe-west"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from 'C:\Users\gioel\Documents\projects\house-rentals'...
+[info] 
+[debug] [2022-03-31T12:45:47.063Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/case-vacanze-930c3/sites 
+[info] +  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2022-03-31T12:45:47.067Z] defaultcredentials: writing to file C:\Users\gioel\AppData\Roaming\firebase\gioelemaruccia8_gmail_com_application_default_credentials.json
+[debug] [2022-03-31T12:45:47.068Z] Setting GAC to C:\Users\gioel\AppData\Roaming\firebase\gioelemaruccia8_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\gioel\\AppData\\Roaming\\firebase\\gioelemaruccia8_gmail_com_application_default_credentials.json"}}
+[debug] [2022-03-31T12:45:47.068Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/adminSdkConfig [none]
+[debug] [2022-03-31T12:45:47.369Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/adminSdkConfig 200
+[debug] [2022-03-31T12:45:47.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/adminSdkConfig {"projectId":"case-vacanze-930c3","storageBucket":"case-vacanze-930c3.appspot.com","locationId":"europe-west"}
+[debug] [2022-03-31T12:45:48.246Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/case-vacanze-930c3/sites 200
+[debug] [2022-03-31T12:45:48.246Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/case-vacanze-930c3/sites {"sites":[{"name":"projects/1092606466367/sites/case-vacanze-930c3","defaultUrl":"https://case-vacanze-930c3.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-03-31T12:45:48.246Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/webApps/-/config [none]
+[debug] [2022-03-31T12:45:49.013Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/webApps/-/config 200
+[debug] [2022-03-31T12:45:49.013Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/case-vacanze-930c3/webApps/-/config {"projectId":"case-vacanze-930c3","appId":"1:1092606466367:web:a12ef5a1ef065eaa989b8a","storageBucket":"case-vacanze-930c3.appspot.com","locationId":"europe-west","apiKey":"AIzaSyBMviv8PftstJXlvre6h3lZxVCwsgBYQDk","authDomain":"case-vacanze-930c3.firebaseapp.com","messagingSenderId":"1092606466367","measurementId":"G-68081LJS91"}
+[info] i  functions: Watching "C:\Users\gioel\Documents\projects\house-rentals\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\gioel\\Documents\\projects\\house-rentals\\functions\" for Cloud Functions..."}}
+[info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[debug] [2022-03-31T12:45:49.029Z] Validating nodejs source
+[debug] [2022-03-31T12:45:50.542Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-03-31T12:45:50.543Z] Building nodejs source
+[debug] [2022-03-31T12:45:50.543Z] Analyzing nodejs backend spec
+[info] +  functions[us-central1-api]: http function initialized (http://localhost:5001/case-vacanze-930c3/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/case-vacanze-930c3/us-central1/api)."}}
+[info] i  hosting: 127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] "GET / HTTP/1.1" 200 644 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] \"GET / HTTP/1.1\" 200 644 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] "GET /static/css/main.145f13c6.css HTTP/1.1" 200 775 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] \"GET /static/css/main.145f13c6.css HTTP/1.1\" 200 775 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] "GET /static/js/main.fb5223d8.js HTTP/1.1" 200 310467 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] \"GET /static/js/main.fb5223d8.js HTTP/1.1\" 200 310467 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] "GET /favicon.ico HTTP/1.1" 200 3870 "http://localhost:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [31/Mar/2022:12:46:12 +0000] \"GET /favicon.ico HTTP/1.1\" 200 3870 \"http://localhost:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36\""}}

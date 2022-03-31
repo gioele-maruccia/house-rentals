@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import "./styles.css";
 import {useState} from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
 import './App.css';
@@ -16,6 +16,7 @@ function App() {
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     });
+
 
     const register = async () => {
         try {
