@@ -3,7 +3,7 @@ import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithE
 import {auth} from "./firebase-config";
 import "./styles.css";
 import './App.css';
-import BaseModalWrapper from "./ModalPopup/BaseModalWrapper";
+import RWDModal from "./ModalPopup/RWDModal";
 
 function App() {
 
@@ -60,7 +60,7 @@ function App() {
     return (
         <div className="App">
             <button onClick={toggleModal}>Show Modal</button>
-            <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
+            <RWDModal header="Login" message="Please log in" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
 {/*            <div>
                 <h3> Register User </h3>
                 <input placeholder="Email..."
