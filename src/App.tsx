@@ -4,61 +4,67 @@ import {auth} from "./firebase-config";
 import "./styles.css";
 import './App.css';
 import RWDModal from "./ModalPopup/RWDModal";
+import Home from './Home';
+import Header from './Header';
 
 function App() {
 
-    // Login/Registration modal popup
+     // Login/Registration modal popup
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const toggleModal = () => {
         setIsModalVisible(wasModalVisible => !wasModalVisible)
     }
 
-    /*
-       const [registerEmail, setRegisterEmail] = useState("");
-       const [registerPassword, setRegisterPassword] = useState("");
-       const [loginEmail, setLoginEmail] = useState("");
-       const [loginPassword, setLoginPassword] = useState("");
+        /*
+           const [registerEmail, setRegisterEmail] = useState("");
+           const [registerPassword, setRegisterPassword] = useState("");
+           const [loginEmail, setLoginEmail] = useState("");
+           const [loginPassword, setLoginPassword] = useState("");
 
-       const [user, setUser] = useState({});
+           const [user, setUser] = useState({});
 
-       onAuthStateChanged(auth, (currentUser) => {
-           setUser(currentUser);
-       });
+           onAuthStateChanged(auth, (currentUser) => {
+               setUser(currentUser);
+           });
 
 
-       const register = async () => {
-           try {
-               const user = await createUserWithEmailAndPassword(
-                   auth,
-                   registerEmail,
-                   registerPassword
-               );
-               console.log(user);
-           } catch (error) {
-               console.log(error.message);
-           }
-       };
+           const register = async () => {
+               try {
+                   const user = await createUserWithEmailAndPassword(
+                       auth,
+                       registerEmail,
+                       registerPassword
+                   );
+                   console.log(user);
+               } catch (error) {
+                   console.log(error.message);
+               }
+           };
 
-       const login = async () => {
-           try {
-               const user = await signInWithEmailAndPassword(
-                   auth,
-                   loginEmail,
-                   loginPassword
-               );
-               console.log(user);
-           } catch (error) {
-               console.log(error.message);
-           }
-       };
+           const login = async () => {
+               try {
+                   const user = await signInWithEmailAndPassword(
+                       auth,
+                       loginEmail,
+                       loginPassword
+                   );
+                   console.log(user);
+               } catch (error) {
+                   console.log(error.message);
+               }
+           };
 
-       const logout = async () => {
-           await signOut(auth);
-       };*/
+           const logout = async () => {
+               await signOut(auth);
+           };*/
 
     return (
         <div className="App">
+
+            <Header />
+            <Home />
+
             <button onClick={toggleModal}>Show Modal</button>
             <RWDModal header="Login" message="Please log in" isModalVisible={isModalVisible} onBackdropClick={toggleModal}/>
 {/*            <div>

@@ -1,0 +1,41 @@
+/* Main banner layout */
+.banner{
+    background-color: darkgrey; /* Add image, slide or video URL */
+    height: 50vh;
+    position: relative;
+}
+
+/* Info banner layout */
+.banner_info{
+    background-color: black;
+    color: white;
+    padding: 10vh 40px 40px;
+    width: 300px;
+}
+
+/* Search date button layout */
+.banner_searchButton{
+    background-color: white;
+    font-weight: 900;
+    text-transform: inherit;
+    color: lightcoral;
+}
+
+/* Explore button layout of info banner */
+.banner_info > button{
+    background-color: lightcoral;
+    color: white;
+    text-transform: inherit;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.banner_info > button:hover{
+    background-color: white;
+    color: lightcoral;
+
+}
+
+/* Info banner description layout */
+.banner_info > h4{
+    margin-top: 10px;
+}
