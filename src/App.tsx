@@ -5,7 +5,7 @@ import './assets/scss/App.scss';
 import './App.css';
 import Header from './elements/Header';
 import Home from "./pages/Home";
-import LoginModal, {LoginFunction} from "./ModalPopup/LoginModal";
+import LoginModal, {LoginFunction} from "./elements/ModalPopup/LoginModal";
 
 const App = () => {
 
