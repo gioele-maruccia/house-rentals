@@ -1,50 +1,34 @@
 import React from 'react';
-import '../assets/scss/Header.css';
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageIcon from '@mui/icons-material/Language';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Avatar from '@mui/icons-material/AccountCircle';
-import {Button} from "@mui/material";
+import '../assets/scss/Header.scss';
+import { Hamburger } from './Hamburger';
+import { Logo } from './Logo';
 
 function Header(){
 
-    const Separator = () => <span> &middot; </span>;
 
     return (
         <div className='header'>
-
-            {/* Website icons */}   {/* Image to change */}
-            <img className="header_icon"
-                 src="https://pngimg.com/uploads/beach/beach_PNG3.png" alt=""/>
-
-            {/* Search text field + icon */}
-            <div className="header_center">
-
-                <Button className='banner_whereButton'
-                        variant='outlined'>Dove</Button>
-                <Separator />
-
-                <Button className='banner_checkInButton'
-                        variant='outlined'>Check-In</Button>
-                <Separator />
-
-                <Button className='banner_checkOutButton'
-                        variant='outlined'>Check-Out</Button>
-                <Separator />
-
-                <Button className='banner_guestButton'
-                        variant='outlined'>Ospiti</Button>
-
-                <SearchIcon />
-
+            
+            <div className="left">
+                <Logo />
             </div>
 
-            {/* User field and settings */}
-            <div className="header_right">
-                <p>Diventa un host</p>
-                <LanguageIcon />
-                <ExpandMoreIcon />
-                <Avatar />
+            <div className="center">
+                <span className="bold">Home</span>
+                <div>
+                    <i className="fa-solid fa-magnifying-glass mr-5"></i>
+                    <span className="bold">Search</span>
+                </div>
+                <span className="bold">About us</span>
+                <span className="bold">Contact us</span>
+            </div>
+            
+            <div className="right">
+                <div className="wrapper">
+                    <Hamburger onPress={() => {}}/>
+                    <i className="fa-solid fa-circle-user"></i>
+                </div>
+
             </div>
 
         </div>

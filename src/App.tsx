@@ -1,7 +1,4 @@
 import React, {useState} from "react";
-import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "./firebase-config";
-import "./styles.css";
 import './assets/scss/App.scss';
 import RWDModal from "./elements/ModalPopup/RWDModal";
 import Header from './elements/Header';

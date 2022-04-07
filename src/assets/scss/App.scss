@@ -1,9 +1,15 @@
 @use 'Mixins.scss';
 @use 'Animations.scss';
 @use 'Layout.scss';
+@use 'Font.scss';
+@use 'Colors.scss';
 
-
+/* Font-Awesome */
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
+
+
+
+
 
 .App {
   text-align: center;

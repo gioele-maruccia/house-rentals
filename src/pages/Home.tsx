@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../Banner';
-import '../assets/scss/Home.css';
+import '../assets/scss/Home.scss';
 
 function Home() {
     return(

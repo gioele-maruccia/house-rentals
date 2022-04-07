@@ -5,6 +5,13 @@
     -o-transform: $property;
 }
 
+@mixin transformOrigin ($property) {
+    transform-origin: $property;
+    -webkit-transform-origin: $property;
+    -moz-transform-origin: $property;
+    -o-transform-origin: $property;
+}
+
 @mixin transition ($property) {
     transition: $property;
     -webkit-transition: $property;
@@ -32,3 +39,4 @@
     -moz-animation-delay: $property;
     -o-animation-delay: $property;
 }
+

@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    padding: 0 8vw;
+    align-items: center;
+
+    .left {
+
+    }
+
+    .center {
+        flex: 1;
+
+        > * {
+            margin: 0 15px;
+            display: inline-block;
+            cursor: pointer;
+
+            opacity: .8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .right {
+        .wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #f2f2f2;
+            padding: 10px 20px;
+            border-radius: 18px;
+
+            i {
+                font-size: 27px;
+                margin-left: 20px;    
+            }
+        }
+    }
+}
