@@ -2,7 +2,6 @@ import {useState} from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "./firebase-config";
 import './assets/scss/App.scss';
-import './App.css';
 import Header from './elements/Header';
 import Home from "./pages/Home";
 import LoginModal, {LoginFunction} from "./elements/ModalPopup/LoginModal";
@@ -16,6 +15,7 @@ const App = () => {
         setIsModalVisible(wasModalVisible => !wasModalVisible)
     }
 
+    // NON CANCELLARE
     /*
        const [registerEmail, setRegisterEmail] = useState("");
        const [registerPassword, setRegisterPassword] = useState("");

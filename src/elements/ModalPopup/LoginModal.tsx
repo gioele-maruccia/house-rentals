@@ -1,5 +1,7 @@
 import React from 'react';
 import RWDModal from "./RWDModal";
+//import {ReactComponent as LoginIcon} from '../../assets/images/person_black_24dp.svg';
+//import {ReactComponent as PasswordIcon} from '../../assets/images/lock_black_24dp.svg';
 
 interface LoginArgs {
     password: string;
