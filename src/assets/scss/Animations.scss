@@ -1,0 +1,86 @@
+@import './Mixins.scss';
+
+.anim-pop-in {
+    @include animate(animatePopIn .3s ease 1 forwards);
+}
+
+.anim-fade-in {
+    @include animate(animateFadeIn .3s ease 1 forwards);
+}
+
+.anim-fade-out {
+    @include animate(animateFadeOut .3s ease 1 forwards);
+}
+
+.anim-slide-in-from-bottom {
+    @include animate(animateSlideInFromBottom .3s ease 1 forwards);
+}
+
+.anim-slide-out-to-bottom {
+    @include animate(animatePopIn .3s ease 1 forwards);
+}
+
+@keyframes animateFadeIn {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes animateFadeOut {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes animateSlideInFromBottom {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        @include transform(translateY(15px));
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+        @include transform(translateY(0px));
+    }
+}
+
+@keyframes animateSlideOutToBottom {
+    from {
+        visibility: visible;
+        opacity: 1;
+        @include transform(translateY(0px));
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+        @include transform(translateY(15px));
+    }
+}
+
+@keyframes animatePopIn {
+    from {
+        visibility: hidden;
+        @include transform(scale(.8));
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        @include transform(scale(1));
+        opacity: 1;
+    }
+}

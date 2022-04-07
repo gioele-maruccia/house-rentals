@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import '../assets/scss/Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';

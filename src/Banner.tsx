@@ -1,6 +1,6 @@
 import React from "react";
-import './Banner.css';
 import {Button} from "@mui/material";
+import './assets/scss/Header.css';
 
 function Banner(){
     return(
