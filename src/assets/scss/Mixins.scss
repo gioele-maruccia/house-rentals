@@ -27,10 +27,10 @@
 }
 
 @mixin animate ($property) {
-    animate: $property;
-    -webkit-animate: $property;
-    -moz-animate: $property;
-    -o-animate: $property;
+    animation: $property;
+    -webkit-animation: $property;
+    -moz-animation: $property;
+    -o-animation: $property;
 }
 
 @mixin animationDelay ($property) {

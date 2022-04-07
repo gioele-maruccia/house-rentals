@@ -1,0 +1,81 @@
+import { useEffect, useState } from "react"
+import '../assets/scss/elements/TextWriting.scss'
+import { random } from "../util/Utils"
+
+type TextWritingProps = {
+    /**
+     * Questo sarà il testo che non cambierà
+     */
+    invariantText : string
+
+    /**
+     * Questo sarà il testo che verrà "animato" come scrittura
+     */
+    textToWrite : string[]
+}
+
+const TextWriting = ({ invariantText, textToWrite } : TextWritingProps) => {
+
+    const [index, setIndex] = useState(0)
+
+    const [charIndex, setCharIndex] = useState(0)
+    const [showingText, setShowingText] = useState('')
+    const [action, setAction] = useState('write' as 'write' | 'erase')
+
+    useEffect(() => {
+        
+        animateWriting()
+
+    }, [ charIndex, action ])
+
+
+    const animateWriting = () => {
+        const currentText = textToWrite[index]
+        
+        setTimeout(() => {
+            // Riporto l'indice a 0 quando è completa l'ultima stringa
+            if (index >= textToWrite.length) {
+                setIndex(0)
+                setCharIndex(0)
+                return
+            }
+
+            // Quando si sta cancellando e la stringa è vuota, si passa alla prossima
+            if (action === 'erase' && showingText === '') {
+                // Parola completata, si va alla prossima
+                setShowingText('')
+                setCharIndex(0)
+                setIndex(index + 1)
+                setAction('write')
+
+                return
+            }
+
+            // Se il testo è completo, si inizia a cancellare carattere per carattere
+            if (showingText === currentText && action === 'write') {
+                setAction('erase')
+                return
+            }
+
+            if (action === 'write') {
+                setShowingText(showingText + currentText[charIndex])
+                setCharIndex(charIndex + 1)
+            } else {
+                setShowingText(showingText.substring(0, showingText.length - 1))
+                setCharIndex(charIndex - 1)
+            }
+
+        }, random(50, 300))
+    }
+    
+    return (
+        <div className="text-writing-wrapper">
+
+            <h2>{ invariantText }</h2>
+            <h2 className="col-primary animated-text ml-5">{ showingText }</h2>
+
+        </div>
+    )
+}
+
+export { TextWriting }
