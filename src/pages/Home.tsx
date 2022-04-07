@@ -12,9 +12,10 @@ function Home() {
             </div>
 
             <Banner />
-
-            <TextWriting invariantText='Giovanotto, ' 
-                textToWrite={['Prima', 'Seconda', 'Terza', 'Pensa alla salute', 'Forza Bitonto', 'Alessandro Bilzerian']}
+            
+            <TextWriting invariantText='We are ' 
+                textToWrite={['Coming.   ', 'Working.   ', 'Creating.   ']}
+                // textToWrite={['Prima', 'Seconda', 'Terza', 'Pensa alla salute', 'Forza Bitonto', 'Alessandro Bilzerian']}
             />
 
         </div>

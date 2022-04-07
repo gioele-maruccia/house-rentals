@@ -45,7 +45,11 @@ const TextWriting = ({ invariantText, textToWrite } : TextWritingProps) => {
                 // Parola completata, si va alla prossima
                 setShowingText('')
                 setCharIndex(0)
-                setIndex(index + 1)
+                if (index + 1 >= textToWrite.length)
+                    setIndex(0)
+                else 
+                    setIndex(index + 1)
+                    
                 setAction('write')
 
                 return
@@ -71,8 +75,8 @@ const TextWriting = ({ invariantText, textToWrite } : TextWritingProps) => {
     return (
         <div className="text-writing-wrapper">
 
-            <h2>{ invariantText }</h2>
-            <h2 className="col-primary animated-text ml-5">{ showingText }</h2>
+            <h1>{ invariantText }</h1>
+            <h1 className="col-primary animated-text ml-5">{ showingText }</h1>
 
         </div>
     )
