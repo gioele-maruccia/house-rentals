@@ -1,0 +1,45 @@
+@for $x from 0 to 100 {
+    $px : $x * 1px;
+
+    .mt-#{$x} {
+        margin-top: $px;
+    }
+    .mr-#{$x} {
+        margin-right: $px;
+    }
+    .mb-#{$x} {
+        margin-bottom: $px;
+    }
+    .ml-#{$x} {
+        margin-left: $px;
+    }
+    .mx-#{$x} {
+        margin-right: $px;
+        margin-left: $px;
+    }
+    .my-#{$x} {
+        margin-top: $px;
+        margin-bottom: $px;
+    }
+
+    .pt-#{$x} {
+        padding-top: $px;
+    }
+    .pr-#{$x} {
+        padding-right: $px;
+    }
+    .pb-#{$x} {
+        padding-bottom: $px;
+    }
+    .pl-#{$x} {
+        padding-left: $px;
+    }
+    .px-#{$x} {
+        padding-right: $px;
+        padding-left: $px;
+    }
+    .py-#{$x} {
+        padding-top: $px;
+        padding-bottom: $px;
+    }
+}

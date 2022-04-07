@@ -1,14 +1,13 @@
 import {useState} from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "./firebase-config";
-import "./styles.css";
+import './assets/scss/App.scss';
 import './App.css';
-import RWDModal from "./ModalPopup/RWDModal";
-import Home from './Home';
-import Header from './Header';
+import Header from './elements/Header';
+import Home from "./pages/Home";
 import LoginModal, {LoginFunction} from "./ModalPopup/LoginModal";
 
-function App() {
+const App = () => {
 
     // Login/Registration modal popup
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -67,8 +66,8 @@ function App() {
     return (
         <div className="App">
 
-            <Header/>
-            <Home/>
+            <Header />
+            <Home />
 
             <button onClick={toggleModal}>Show Modal</button>
             <LoginModal isModalVisible={isModalVisible}

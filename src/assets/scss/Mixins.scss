@@ -1,0 +1,42 @@
+@mixin transform ($property) {
+    transform: $property;
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -o-transform: $property;
+}
+
+@mixin transformOrigin ($property) {
+    transform-origin: $property;
+    -webkit-transform-origin: $property;
+    -moz-transform-origin: $property;
+    -o-transform-origin: $property;
+}
+
+@mixin transition ($property) {
+    transition: $property;
+    -webkit-transition: $property;
+    -moz-transition: $property;
+    -o-transition: $property;
+}
+
+@mixin boxShadow ($property) {
+    box-shadow: $property;
+    -webkit-box-shadow: $property;
+    -moz-box-shadow: $property;
+    -o-box-shadow: $property;
+}
+
+@mixin animate ($property) {
+    animate: $property;
+    -webkit-animate: $property;
+    -moz-animate: $property;
+    -o-animate: $property;
+}
+
+@mixin animationDelay ($property) {
+    animation-delay: $property;
+    -webkit-animation-delay: $property;
+    -moz-animation-delay: $property;
+    -o-animation-delay: $property;
+}
+
