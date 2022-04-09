@@ -8,6 +8,12 @@ const ModalContainer = styled.div`
     position: relative; 
 `;
 
+export const Error = styled.div`
+    padding: 16px 0;
+    font-size: 18px;
+    color: red;
+`;
+
 export const DesktopModalContainer = styled(ModalContainer)`
     border-radius: 7px; 
     box-shadow: 0 0 32px rgba(0,0,0,0.5);

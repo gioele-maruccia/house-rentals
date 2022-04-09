@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 interface ModalProps {
-    onBackdropClick: () => void;
+    onClose: () => void;
 }
 
 const Overlay = styled.div`
@@ -18,8 +18,8 @@ const Overlay = styled.div`
     justify-content: center;
 `;
 
-const Modal: React.FC<ModalProps> = ({onBackdropClick, children}) => {
-    return ReactDOM.createPortal(<Overlay onClick={onBackdropClick}>
+const Modal: React.FC<ModalProps> = ({onClose, children}) => {
+    return ReactDOM.createPortal(<Overlay onClick={onClose}>
         <div onClick={e => e.stopPropagation()}>
             {children}
         </div>

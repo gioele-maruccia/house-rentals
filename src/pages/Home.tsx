@@ -12,7 +12,6 @@ function Home() {
     return(
         <div className='home'>
 
-
             <Banner />
             
             <TextWriting invariantText='We are ' 

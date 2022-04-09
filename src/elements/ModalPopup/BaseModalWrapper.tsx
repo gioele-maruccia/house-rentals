@@ -4,7 +4,7 @@ import {Header, Message, CloseSign} from "./ModalPopup.styles";
 
 export interface BaseModalWrapperProps {
     isModalVisible: boolean;
-    onBackdropClick: () => void;
+    onClose: () => void;
     header: string;
     message?: string;
     content?: ReactNode; // allows to pass a react components via Props
@@ -20,7 +20,7 @@ interface ComponentsProps {
 type Props = BaseModalWrapperProps & ComponentsProps;
 
 const BaseModalWrapper: React.FC<Props> = ({
-                                               onBackdropClick,
+                                               onClose,
                                                isModalVisible,
                                                header,
                                                message,
@@ -32,9 +32,9 @@ const BaseModalWrapper: React.FC<Props> = ({
         return null
     }
 
-    return (<Modal onBackdropClick={onBackdropClick}>
+    return (<Modal onClose={onClose}>
         <ContainerComponent>
-            <CloseButtonComponent onClick={onBackdropClick}>
+            <CloseButtonComponent onClick={onClose}>
                 <CloseSign/>
             </CloseButtonComponent>
             <Header> {header} </Header>

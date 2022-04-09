@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, User} from "firebase/auth";
 import {auth} from "./firebase-config";
 import './assets/scss/App.scss';
 import Header from './elements/Header';
@@ -10,24 +10,22 @@ const App = () => {
 
     // Login/Registration modal popup
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [loginError, setLoginError] = useState<string | undefined>();
+    const [user, setUser] = useState<User | null>(null);
 
     const toggleModal = () => {
-        setIsModalVisible(wasModalVisible => !wasModalVisible)
+        setIsModalVisible(isModalVisible => !isModalVisible)
+        setLoginError("");
     }
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
 
     // NON CANCELLARE
     /*
        const [registerEmail, setRegisterEmail] = useState("");
        const [registerPassword, setRegisterPassword] = useState("");
-       const [loginEmail, setLoginEmail] = useState("");
-       const [loginPassword, setLoginPassword] = useState("");
-
-       const [user, setUser] = useState({});
-
-       onAuthStateChanged(auth, (currentUser) => {
-           setUser(currentUser);
-       });
-
 
        const register = async () => {
            try {
@@ -42,26 +40,28 @@ const App = () => {
            }
        };
 
-       const login = async () => {
-           try {
-               const user = await signInWithEmailAndPassword(
-                   auth,
-                   loginEmail,
-                   loginPassword
-               );
-               console.log(user);
-           } catch (error) {
-               console.log(error.message);
-           }
-       };
 
-       const logout = async () => {
-           await signOut(auth);
-       };*/
+*/
 
-    const onLoginRequest: LoginFunction = async ({password, login}) => {
-        console.log(password, login);
-    }
+
+    const onLoginRequest: LoginFunction = async ({loginPassword, loginEmail}) => {
+        try {
+            setLoginError("");
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginEmail,
+                loginPassword
+            );
+            console.log(user);
+        } catch (error: any) {
+            console.log(error.message);
+            setLoginError(error.message);
+        }
+    };
+
+    const logout = async () => {
+        await signOut(auth);
+    };
 
     return (
         <div className="App">
@@ -69,9 +69,10 @@ const App = () => {
             <Header />
             <Home />
 
-            <button onClick={toggleModal}>Show Modal</button>
-            <LoginModal isModalVisible={isModalVisible}
-                        onBackdropClick={toggleModal}
+            <button onClick={toggleModal}>LOGIN</button>
+            <LoginModal loginError={loginError}
+                        isModalVisible={isModalVisible}
+                        onClose={toggleModal}
                         onLoginRequested={onLoginRequest}>
             </LoginModal>
 
@@ -90,24 +91,11 @@ const App = () => {
 
                 <button onClick={register}> Create User</button>
             </div>
-            <div>
-                <h3> Login </h3>
-                <input placeholder="Email..."
-                       onChange={(event) => {
-                           setLoginEmail(event.target.value);
-                       }}
-                />
-                <input placeholder="Password..."
-                       onChange={(event) => {
-                           setLoginPassword(event.target.value);
-                       }}
-                />
 
-                <button onClick={login}> Login</button>
-            </div>
+            */}
             <h4> User Logged In: </h4>
             {user?.email}
-            <button onClick={logout}> Sign Out</button>*/}
+            <button onClick={logout}> Sign Out</button>
         </div>
     );
 }

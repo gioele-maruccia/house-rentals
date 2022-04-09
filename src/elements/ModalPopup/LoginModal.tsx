@@ -1,36 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
 import RWDModal from "./RWDModal";
-//import {ReactComponent as LoginIcon} from '../../assets/images/person_black_24dp.svg';
-//import {ReactComponent as PasswordIcon} from '../../assets/images/lock_black_24dp.svg';
+import {Error} from "./ModalPopup.styles";
+import {Input} from "../Input";
+import {Button} from "../Button";
 
 interface LoginArgs {
-    password: string;
-    login: string;
+    loginPassword: string;
+    loginEmail: string;
 }
 
 export type LoginFunction = (args: LoginArgs) => Promise<void>;
 
 interface LoginModalProps {
-    onBackdropClick: () => void;
+    onClose: () => void;
     isModalVisible: boolean;
     loginError?: string;
     onLoginRequested: LoginFunction;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({onBackdropClick, isModalVisible, loginError, onLoginRequested}) => {
+const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginError, onLoginRequested}) => {
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+
     return (<RWDModal
-        onBackdropClick={onBackdropClick}
+        onClose={onClose}
         isModalVisible={isModalVisible}
         header="Login"
         message="please log in"
         content={
             <>
-                <input/>
-                <input/>
-                <button>Cancel</button>
-                <button>Log In</button>
+                <Input
+                    value={loginEmail}
+                    onValueChange={setLoginEmail}
+                    hint='Es. john.doe@gmail.com'
+                    label='Email'
+                />
+                <Input
+                    type='password'
+                    value={loginPassword}
+                    onValueChange={setLoginPassword}
+                    hint='Not 123456'
+                    label='Password'
+                />
+                {loginError && <Error>{loginError}</Error>}
+                <div className="mb-20 row center">
+                    <Button type='dark' onClick={onClose}>Cancel</Button>
+                    <Button type='dark' onClick={()=>onLoginRequested({loginPassword, loginEmail})}>Log In</Button>
+                </div>
             </>
-        }/>);
+        }
+    />);
 }
 
 export default LoginModal;
