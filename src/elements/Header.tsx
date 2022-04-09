@@ -9,9 +9,10 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
+    signInWithPopup,
     User
 } from "firebase/auth";
-import {auth} from "../firebase-config";
+import {auth, provider} from "../firebase-config";
 
 function Header() {
 
@@ -64,11 +65,21 @@ function Header() {
         }
     };
 
+    // GOOGLE LOGIN
+    const onLoginWithGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            console.log(result);
+        }
+        catch (error: any) {
+            console.log(error.message);
+        }
+    };
+
 
     const logout = async () => {
         await signOut(auth);
     };
-
 
     return (
         <div className='header'>
@@ -86,27 +97,31 @@ function Header() {
                 <span className="bold">About us</span>
                 <span className="bold">Contact us</span>
             </div>
+            <div>
+                <button onClick={toggleLoginModal}>LOGIN</button>
+                <LoginModal loginError={loginError}
+                            isModalVisible={isLoginModalVisible}
+                            onClose={toggleLoginModal}
+                            onLoginRequested={onLoginRequest}
+                            onLoginWithGoogleRequested={onLoginWithGoogle}>
+                </LoginModal>
+
+                <button onClick={toggleRegisterModal}>REGISTER</button>
+                <RegisterModal registerError={registerError}
+                               isModalVisible={isRegisterModalVisible}
+                               onClose={toggleRegisterModal}
+                               onRegisterRequested={onRegisterRequest}>
+                </RegisterModal>
+
+                <h4> User Logged In: </h4>
+                {user?.email}
+                <button onClick={logout}> Sign Out</button>
+
+            </div>
 
             <div className="right">
 
                 <div className="wrapper">
-                    <button onClick={toggleLoginModal}>LOGIN</button>
-                    <LoginModal loginError={loginError}
-                                isModalVisible={isLoginModalVisible}
-                                onClose={toggleLoginModal}
-                                onLoginRequested={onLoginRequest}>
-                    </LoginModal>
-
-                    <button onClick={toggleRegisterModal}>REGISTER</button>
-                    <RegisterModal registerError={registerError}
-                                   isModalVisible={isRegisterModalVisible}
-                                   onClose={toggleRegisterModal}
-                                   onRegisterRequested={onRegisterRequest}>
-                    </RegisterModal>
-
-                    <h4> User Logged In: </h4>
-                    {user?.email}
-                    <button onClick={logout}> Sign Out</button>
 
                     <Hamburger onPress={() => {
                     }}/>
