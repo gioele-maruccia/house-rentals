@@ -70,8 +70,7 @@ function Header() {
         try {
             const result = await signInWithPopup(auth, provider);
             console.log(result);
-        }
-        catch (error: any) {
+        } catch (error: any) {
             console.log(error.message);
         }
     };
@@ -112,10 +111,11 @@ function Header() {
                                onClose={toggleRegisterModal}
                                onRegisterRequested={onRegisterRequest}>
                 </RegisterModal>
+                {user != null && <div><h4> User Logged In:
+                    {user?.email}  </h4>
+                    <button onClick={logout}> Sign Out</button>
+                </div>}
 
-                <h4> User Logged In: </h4>
-                {user?.email}
-                <button onClick={logout}> Sign Out</button>
 
             </div>
 
