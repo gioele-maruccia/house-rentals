@@ -3,6 +3,7 @@ import Banner from '../Banner';
 import '../assets/scss/Home.scss';
 import { TextWriting } from '../elements/TextWriting';
 import { Input } from '../elements/Input';
+import { Button } from '../elements/Button';
 
 function Home() {
     const [inputValue1, setInputValue1] = useState('')
@@ -40,6 +41,13 @@ function Home() {
                 />
 
                 <button onClick={() => alert(inputValue2)}>SHOW INPUT</button>
+            </div>
+
+            <div className="mb-20 row center">
+                <Button type='dark' onClick={() => alert('Clicked')}>CLICK ME</Button>
+                <Button type='success' onClick={() => alert('Clicked')}>CLICK ME</Button>
+                <Button type='warning' onClick={() => alert('Clicked')}>CLICK ME</Button>
+                <Button type='error' onClick={() => alert('Clicked')}>CLICK ME</Button>
             </div>
         </div>
     )

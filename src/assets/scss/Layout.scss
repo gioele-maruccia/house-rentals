@@ -43,3 +43,13 @@
         padding-bottom: $px;
     }
 }
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+
+    &.center {
+        align-items: center;
+        justify-content: center;
+    }
+}
