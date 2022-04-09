@@ -7,9 +7,10 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
+    signInWithPopup,
     User
 } from "firebase/auth";
-import {auth} from "../firebase-config";
+import {auth, provider} from "../firebase-config";
 import { ProfileMenu } from './ProfileMenu';
 import styled from 'styled-components';
 
@@ -34,6 +35,7 @@ position: relative;
         cursor: pointer;
 
         opacity: .8;
+import {auth, provider} from "../firebase-config";
 
         &:hover {
             opacity: 1;
@@ -96,11 +98,20 @@ function Header() {
         }
     };
 
+    // GOOGLE LOGIN
+    const onLoginWithGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            console.log(result);
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    };
+
 
     const logout = async () => {
         await signOut(auth);
     };
-
 
     return (
         <Wrapper>
@@ -118,6 +129,28 @@ function Header() {
                 <span className="bold">About us</span>
                 <span className="bold">Contact us</span>
             </div>
+            <div>
+                <button onClick={toggleLoginModal}>LOGIN</button>
+                <LoginModal loginError={loginError}
+                            isModalVisible={isLoginModalVisible}
+                            onClose={toggleLoginModal}
+                            onLoginRequested={onLoginRequest}
+                            onLoginWithGoogleRequested={onLoginWithGoogle}>
+                </LoginModal>
+
+                <button onClick={toggleRegisterModal}>REGISTER</button>
+                <RegisterModal registerError={registerError}
+                               isModalVisible={isRegisterModalVisible}
+                               onClose={toggleRegisterModal}
+                               onRegisterRequested={onRegisterRequest}>
+                </RegisterModal>
+                {user != null && <div><h4> User Logged In:
+                    {user?.email}  </h4>
+                    <button onClick={logout}> Sign Out</button>
+                </div>}
+
+
+            </div>
 
 
             <div className="right">
@@ -131,9 +164,11 @@ function Header() {
                     }} />
 
                     <LoginModal loginError={loginError}
-                                isModalVisible={isLoginModalVisible}
-                                onClose={toggleLoginModal}
-                                onLoginRequested={onLoginRequest}>
+                        isModalVisible={isLoginModalVisible}
+                        onClose={toggleLoginModal}
+                        onLoginRequested={onLoginRequest} onLoginWithGoogleRequested={function (): void {
+                            throw new Error('Function not implemented.');
+                        } }>
                     </LoginModal>
 
                     <RegisterModal registerError={registerError}
@@ -146,7 +181,6 @@ function Header() {
                     {user?.email}
                     <button onClick={logout}> Sign Out</button> */}
                    
-
             </div>
 
         </Wrapper>

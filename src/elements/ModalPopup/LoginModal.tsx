@@ -16,9 +16,10 @@ interface LoginModalProps {
     isModalVisible: boolean;
     loginError?: string;
     onLoginRequested: LoginFunction;
+    onLoginWithGoogleRequested: () => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginError, onLoginRequested}) => {
+const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginError, onLoginRequested, onLoginWithGoogleRequested}) => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
@@ -44,8 +45,9 @@ const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginEr
                 />
                 {loginError && <Error>{loginError}</Error>}
                 <div className="mb-20 row center">
-                    <Button type='dark' onClick={onClose}>Cancel</Button>
-                    <Button type='dark' onClick={()=>onLoginRequested({loginPassword, loginEmail})}>Log In</Button>
+                    <Button type='light' onClick={onClose}>Cancel</Button>
+                    <Button type='light' onClick={()=>onLoginRequested({loginPassword, loginEmail})}>Log In</Button>
+                    <Button type='light' onClick={onLoginWithGoogleRequested}>Google login</Button>
                 </div>
             </>
         }
