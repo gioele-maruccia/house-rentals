@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import '../assets/scss/Header.scss';
-import {Hamburger} from './Hamburger';
 import {Logo} from './Logo';
 import LoginModal, {LoginFunction} from "./ModalPopup/LoginModal";
 import RegisterModal, {RegisterFunction} from "./ModalPopup/RegisterModal";
@@ -12,7 +10,41 @@ import {
     User
 } from "firebase/auth";
 import {auth} from "../firebase-config";
+import { ProfileMenu } from './ProfileMenu';
+import styled from 'styled-components';
 
+const Wrapper = styled.div`
+display: flex;
+padding: 3vh 8vw;
+align-items: center;
+position: relative;
+
+.left {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+> .center {
+    flex: 6;
+
+    > * {
+        margin: 0 15px;
+        display: inline-block;
+        cursor: pointer;
+
+        opacity: .8;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.right {
+    flex: 1;
+}
+`
 function Header() {
 
     // Login/Registration modal popup
@@ -71,7 +103,7 @@ function Header() {
 
 
     return (
-        <div className='header'>
+        <Wrapper>
 
             <div className="left">
                 <Logo/>
@@ -87,35 +119,37 @@ function Header() {
                 <span className="bold">Contact us</span>
             </div>
 
+
             <div className="right">
 
-                <div className="wrapper">
-                    <button onClick={toggleLoginModal}>LOGIN</button>
+                <ProfileMenu
+                    onCommand={a => {
+                        switch (a) {
+                            case 'login' : toggleLoginModal(); break;
+                            case 'signup' : toggleRegisterModal(); break;
+                        }
+                    }} />
+
                     <LoginModal loginError={loginError}
                                 isModalVisible={isLoginModalVisible}
                                 onClose={toggleLoginModal}
                                 onLoginRequested={onLoginRequest}>
                     </LoginModal>
 
-                    <button onClick={toggleRegisterModal}>REGISTER</button>
                     <RegisterModal registerError={registerError}
                                    isModalVisible={isRegisterModalVisible}
                                    onClose={toggleRegisterModal}
                                    onRegisterRequested={onRegisterRequest}>
                     </RegisterModal>
 
-                    <h4> User Logged In: </h4>
+                    {/* <h4> User Logged In: </h4>
                     {user?.email}
-                    <button onClick={logout}> Sign Out</button>
-
-                    <Hamburger onPress={() => {
-                    }}/>
-                    <i className="fa-solid fa-circle-user"></i>
-                </div>
+                    <button onClick={logout}> Sign Out</button> */}
+                   
 
             </div>
 
-        </div>
+        </Wrapper>
     )
 }
 
