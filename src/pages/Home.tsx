@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../Banner';
 import '../assets/scss/Home.scss';
 import { TextWriting } from '../elements/TextWriting';
+import { Input } from '../elements/Input';
 
 function Home() {
+    const [inputValue1, setInputValue1] = useState('')
+    const [inputValue2, setInputValue2] = useState('')
+    
     return(
         <div className='home'>
 
-            <div className="anim-pop-in">
-                <h1>PROVA</h1>
-            </div>
 
             <Banner />
             
@@ -18,6 +19,28 @@ function Home() {
                 // textToWrite={['Prima', 'Seconda', 'Terza', 'Pensa alla salute', 'Forza Bitonto', 'Alessandro Bilzerian']}
             />
 
+            <div style={{ width: '20vw', minWidth: '350px', margin: '20px auto'}}>
+                <Input 
+                    value={inputValue1}
+                    onValueChange={setInputValue1}
+                    hint='Es. john.doe@gmail.com'
+                    label='Email'
+                />
+
+                <button onClick={() => alert(inputValue1)}>SHOW INPUT</button>
+            </div>
+
+            <div style={{ width: '20vw', minWidth: '350px', margin: '20px auto'}}>
+                <Input 
+                    type='password'
+                    value={inputValue2}
+                    onValueChange={setInputValue2}
+                    hint='Not 123456'
+                    label='Password'
+                />
+
+                <button onClick={() => alert(inputValue2)}>SHOW INPUT</button>
+            </div>
         </div>
     )
 }
