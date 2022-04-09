@@ -11,7 +11,7 @@ import {
     User
 } from "firebase/auth";
 import {auth, provider} from "../firebase-config";
-import { ProfileMenu } from './ProfileMenu';
+import {ProfileMenu} from './ProfileMenu';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -47,6 +47,7 @@ import {auth, provider} from "../firebase-config";
     flex: 1;
 }
 `
+
 function Header() {
 
     // Login/Registration modal popup
@@ -129,8 +130,25 @@ function Header() {
                 <span className="bold">About us</span>
                 <span className="bold">Contact us</span>
             </div>
-            <div>
-                <button onClick={toggleLoginModal}>LOGIN</button>
+
+            <div className="right">
+
+                <ProfileMenu
+                    onCommand={a => {
+                        switch (a) {
+                            case 'login' :
+                                toggleLoginModal();
+                                break;
+                            case 'signup' :
+                                toggleRegisterModal();
+                                break;
+                            case 'logout':
+                                logout();
+                                break;
+                        }
+                    }}
+                    user={user}/>
+
                 <LoginModal loginError={loginError}
                             isModalVisible={isLoginModalVisible}
                             onClose={toggleLoginModal}
@@ -138,49 +156,16 @@ function Header() {
                             onLoginWithGoogleRequested={onLoginWithGoogle}>
                 </LoginModal>
 
-                <button onClick={toggleRegisterModal}>REGISTER</button>
                 <RegisterModal registerError={registerError}
                                isModalVisible={isRegisterModalVisible}
                                onClose={toggleRegisterModal}
                                onRegisterRequested={onRegisterRequest}>
                 </RegisterModal>
-                {user != null && <div><h4> User Logged In:
-                    {user?.email}  </h4>
-                    <button onClick={logout}> Sign Out</button>
-                </div>}
 
-
-            </div>
-
-
-            <div className="right">
-
-                <ProfileMenu
-                    onCommand={a => {
-                        switch (a) {
-                            case 'login' : toggleLoginModal(); break;
-                            case 'signup' : toggleRegisterModal(); break;
-                        }
-                    }} />
-
-                    <LoginModal loginError={loginError}
-                        isModalVisible={isLoginModalVisible}
-                        onClose={toggleLoginModal}
-                        onLoginRequested={onLoginRequest} onLoginWithGoogleRequested={function (): void {
-                            throw new Error('Function not implemented.');
-                        } }>
-                    </LoginModal>
-
-                    <RegisterModal registerError={registerError}
-                                   isModalVisible={isRegisterModalVisible}
-                                   onClose={toggleRegisterModal}
-                                   onRegisterRequested={onRegisterRequest}>
-                    </RegisterModal>
-
-                    {/* <h4> User Logged In: </h4>
+                {/* <h4> User Logged In: </h4>
                     {user?.email}
                     <button onClick={logout}> Sign Out</button> */}
-                   
+
             </div>
 
         </Wrapper>

@@ -1,6 +1,9 @@
-import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import React, {CSSProperties, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
-import { Hamburger } from "./Hamburger";
+import {Hamburger} from "./Hamburger";
+import {
+    User
+} from "firebase/auth";
 
 //#region STYLES
 const Wrapper = styled.div`
@@ -50,21 +53,22 @@ z-index: 999999;
 `
 //#endregion
 
-type ActionType = 'login' | 'signup' | 'profile' | 'favourites' | 'become_an_host'
+type ActionType = 'login' | 'signup' | 'logout' | 'profile' | 'favourites' | 'become_an_host'
 type ProfileMenuProps = {
-    onCommand : (command : ActionType) => void
-    style? : CSSProperties
+    onCommand: (command: ActionType) => void
+    style?: CSSProperties
+    user?: User | null
 }
 
-const ProfileMenu = ({ 
-    onCommand,
-    style
-} : ProfileMenuProps) => {
+const ProfileMenu = ({
+                         onCommand,
+                         style, user
+                     }: ProfileMenuProps) => {
 
     const wrapperRef = useRef(null as any)
 
     const [menuVisible, setMenuVisible] = useState(false)
-    
+
     useEffect(() => {
         // Detect outside-of-component click
         document.addEventListener('click', e => {
@@ -74,7 +78,7 @@ const ProfileMenu = ({
         })
     }, [wrapperRef])
 
-    const triggerCommand = (action : ActionType) => {
+    const triggerCommand = (action: ActionType) => {
         setMenuVisible(false)
         onCommand(action)
     }
@@ -83,23 +87,25 @@ const ProfileMenu = ({
     return (
         <Wrapper style={style} ref={wrapperRef}>
             <div className="row center nowrap">
-                <Hamburger onPress={() => setMenuVisible(!menuVisible)} />
+                {user != null && <h4> Welcome {user?.email}</h4> }
+                <Hamburger onPress={() => setMenuVisible(!menuVisible)}/>
                 <i className="ml-15 fa-solid fa-user-circle"></i>
             </div>
 
             {
                 menuVisible &&
-                    <Menu className="anim-slide-in-from-top">
-                        <div onClick={() => triggerCommand('login')}>Login</div>
-                        <div onClick={() => triggerCommand('signup')}>Sign up</div>
-                        <div className="sep"></div>
-                        <div onClick={() => triggerCommand('profile')}>Profile</div>
-                        <div onClick={() => triggerCommand('favourites')}>Favourites</div>
-                        <div onClick={() => triggerCommand('become_an_host')}>Become an host</div>
-                    </Menu>
+                <Menu className="anim-slide-in-from-top">
+                    <div onClick={() => triggerCommand('login')}>Login</div>
+                    <div onClick={() => triggerCommand('signup')}>Sign up</div>
+                    {user != null && <div onClick={() => triggerCommand('logout')}>Logout</div>}
+                    <div className="sep"></div>
+                    <div onClick={() => triggerCommand('profile')}>Profile</div>
+                    <div onClick={() => triggerCommand('favourites')}>Favourites</div>
+                    <div onClick={() => triggerCommand('become_an_host')}>Become an host</div>
+                </Menu>
             }
         </Wrapper>
     )
 }
 
-export { ProfileMenu }
+export {ProfileMenu}
