@@ -4,6 +4,7 @@ import '../assets/scss/Home.scss';
 import { TextWriting } from '../elements/TextWriting';
 import { Input } from '../elements/Input';
 import { Button } from '../elements/Button';
+import { ProfileMenu } from '../elements/ProfileMenu';
 
 function Home() {
     const [inputValue1, setInputValue1] = useState('')
@@ -47,6 +48,10 @@ function Home() {
                 <Button type='success' onClick={() => alert('Clicked')}>CLICK ME</Button>
                 <Button type='warning' onClick={() => alert('Clicked')}>CLICK ME</Button>
                 <Button type='error' onClick={() => alert('Clicked')}>CLICK ME</Button>
+            </div>
+
+            <div className="row center">
+                <ProfileMenu onCommand={a => {}}/>
             </div>
         </div>
     )

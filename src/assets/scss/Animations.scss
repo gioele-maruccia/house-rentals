@@ -17,7 +17,15 @@
 }
 
 .anim-slide-out-to-bottom {
-    @include animate(animatePopIn .3s ease 1 forwards);
+    @include animate(animateSlideOutToBottom .3s ease 1 forwards);
+}
+
+.anim-slide-in-from-top {
+    @include animate(animateSlideInFromTop .3s ease 1 forwards);
+}
+
+.anim-slide-out-to-top {
+    @include animate(animateSlideOutFromTop .3s ease 1 forwards);
 }
 
 @keyframes animateFadeIn {
@@ -69,6 +77,34 @@
         visibility: hidden;
         opacity: 0;
         @include transform(translateY(15px));
+    }
+}
+
+@keyframes animateSlideInFromTop {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        @include transform(translateY(-15px));
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+        @include transform(translateY(0px));
+    }
+}
+
+@keyframes animateSlideOutToTop {
+    from {
+        visibility: visible;
+        opacity: 1;
+        @include transform(translateY(0px));
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+        @include transform(translateY(-15px));
     }
 }
 

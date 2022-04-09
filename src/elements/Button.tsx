@@ -12,7 +12,7 @@ font-weight: bolder;
 
 &:hover {
     transform: translateY(1px);
-    border-bottom-width: 4px;
+    box-shadow: 0 2px 0 0px;
 }
 `
 
@@ -57,7 +57,9 @@ const Button = ({
                 borderColor: getColor(),
                 borderBottomColor: getColor()
             }
-        } onClick={onClick}>
+        }
+        onClick={onClick}
+        >
 
             { children }
 
