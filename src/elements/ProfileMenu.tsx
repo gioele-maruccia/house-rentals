@@ -4,6 +4,7 @@ import {Hamburger} from "./Hamburger";
 import {
     User
 } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 //#region STYLES
 const Wrapper = styled.div`
@@ -49,11 +50,16 @@ z-index: 999999;
         border-radius: 5px;
         padding:0;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 `
 //#endregion
 
-type ActionType = 'login' | 'signup' | 'logout' | 'profile' | 'favourites' | 'become_an_host'
+type ActionType = 'login' | 'signup' | 'logout' 
 type ProfileMenuProps = {
     onCommand: (command: ActionType) => void
     style?: CSSProperties
@@ -99,9 +105,18 @@ const ProfileMenu = ({
                     <div onClick={() => triggerCommand('signup')}>Sign up</div>
                     {user != null && <div onClick={() => triggerCommand('logout')}>Logout</div>}
                     <div className="sep"></div>
-                    <div onClick={() => triggerCommand('profile')}>Profile</div>
-                    <div onClick={() => triggerCommand('favourites')}>Favourites</div>
-                    <div onClick={() => triggerCommand('become_an_host')}>Become an host</div>
+                    <div>
+                        <Link to="/profile">Profile</Link>
+                    </div>
+                    <div>
+                        <Link to="/favourites">Favourites</Link>
+                    </div>
+                    <div>
+                        <Link to="/become_an_host">Become an host</Link>
+                    </div>
+                    <div>
+                        <Link to="/DEV">DEV</Link>
+                    </div>
                 </Menu>
             }
         </Wrapper>

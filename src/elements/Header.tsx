@@ -13,6 +13,7 @@ import {
 import {auth, provider} from "../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
 display: flex;
@@ -33,9 +34,9 @@ position: relative;
         margin: 0 15px;
         display: inline-block;
         cursor: pointer;
-
+        text-decoration: none;
+        color: inherit;
         opacity: .8;
-import {auth, provider} from "../firebase-config";
 
         &:hover {
             opacity: 1;
@@ -122,13 +123,13 @@ function Header() {
             </div>
 
             <div className="center">
-                <span className="bold">Home</span>
+                <Link to="/home" className="bold">Home</Link>
                 <div>
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
                     <span className="bold">Search</span>
                 </div>
-                <span className="bold">About us</span>
-                <span className="bold">Contact us</span>
+                <Link to="/about-us" className="bold">About us</Link>
+                <Link to="/contact-us" className="bold">Contact us</Link>
             </div>
 
             <div className="right">
