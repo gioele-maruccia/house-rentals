@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-date-range": "^1.4.3",
     "sass": "^1.50.0"
   }
 }

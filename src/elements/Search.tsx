@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import '../assets/scss/Search.scss';
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-// @ts-ignore
-import { DateRangePicker } from "react-date-range";
+import { DateRangePicker } from 'react-date-range';
 
 function Search(){
 
@@ -25,7 +24,9 @@ function Search(){
     // @ts-ignore
     return(
         <div className='search'>
-            <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>
+            <DateRangePicker 
+                ranges={[selectionRange]} onChange={handleSelect}
+            />
         </div>
     )
 }

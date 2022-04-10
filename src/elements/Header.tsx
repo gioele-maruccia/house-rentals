@@ -37,6 +37,7 @@ position: relative;
         text-decoration: none;
         color: inherit;
         opacity: .8;
+        user-select: none;
 
         &:hover {
             opacity: 1;
