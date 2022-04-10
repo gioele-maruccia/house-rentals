@@ -16,7 +16,8 @@ function Search(){
         key: "selection",
     };
 
-    function handleSelect(ranges: { selection: { startDate: React.SetStateAction<Date>; endDate: React.SetStateAction<Date>; }; }) {
+    /*: { selection: { startDate: React.SetStateAction<Date>; endDate: React.SetStateAction<Date>; }; }*/
+    function handleSelect(ranges:any) {
         setStartDate(ranges.selection.startDate);
         setEndDate(ranges.selection.endDate);
     }
@@ -24,7 +25,7 @@ function Search(){
     // @ts-ignore
     return(
         <div className='search'>
-            <DateRangePicker ranges={[selectionRange]}/>
+            <DateRangePicker ranges={[selectionRange]} onChange={handleSelect}/>
         </div>
     )
 }
