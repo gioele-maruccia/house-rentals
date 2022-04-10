@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ModalContainer = styled.div`
-    background-color: black; 
+    background-color: white; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -33,20 +33,11 @@ export const MobileModalContainer = styled(ModalContainer)`
     font-size: 26px;    
 `;
 
-export const Header = styled.h3 `
-    color: white;
-    font-size: 35px; 
-    line-height: 1em;
-    font-weight: 300;
-    margin: 5px 0 10px; 
-    text-align: center;
-`;
-
 export const Message = styled.p `
-    color: #aaa;
+    color: black;
     font-size: 15px;
     font-weight: 500;
-    margin: 0 0 36px;
+    margin: 22px 0 22px 0;
     text-align: center;
 `;
 

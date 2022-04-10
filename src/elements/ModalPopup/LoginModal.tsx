@@ -26,10 +26,10 @@ const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginEr
     return (<RWDModal
         onClose={onClose}
         isModalVisible={isModalVisible}
-        header="Login"
-        message="please log in"
+        message="Login"
         content={
             <>
+                <Button type='dark' onClick={onLoginWithGoogleRequested}>Google login</Button>
                 <Input
                     value={loginEmail}
                     onValueChange={setLoginEmail}
@@ -44,11 +44,7 @@ const LoginModal: React.FC<LoginModalProps> = ({onClose, isModalVisible, loginEr
                     label='Password'
                 />
                 {loginError && <Error>{loginError}</Error>}
-                <div className="mb-20 row center">
-                    <Button type='light' onClick={onClose}>Cancel</Button>
-                    <Button type='light' onClick={()=>onLoginRequested({loginPassword, loginEmail})}>Log In</Button>
-                    <Button type='light' onClick={onLoginWithGoogleRequested}>Google login</Button>
-                </div>
+                <Button type='dark' onClick={()=>onLoginRequested({loginPassword, loginEmail})}>Log In</Button>
             </>
         }
     />);

@@ -25,8 +25,7 @@ const RegisterModal: React.FC<RegistrationModalProps> = ({onClose, isModalVisibl
     return (<RWDModal
         onClose={onClose}
         isModalVisible={isModalVisible}
-        header="Registration form"
-        message="please Register"
+        message="Register"
         content={
             <>
                 <Input
@@ -44,7 +43,6 @@ const RegisterModal: React.FC<RegistrationModalProps> = ({onClose, isModalVisibl
                 />
                 {registerError && <Error>{registerError}</Error>}
                 <div className="mb-20 row center">
-                    <Button type='dark' onClick={onClose}>Cancel</Button>
                     <Button type='dark' onClick={()=>onRegisterRequested({registerPassword, registerEmail})}>REGISTER</Button>
                 </div>
             </>
