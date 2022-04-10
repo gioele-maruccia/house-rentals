@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Logo} from './Logo';
 import LoginModal, {LoginFunction} from "./ModalPopup/LoginModal";
 import RegisterModal, {RegisterFunction} from "./ModalPopup/RegisterModal";
@@ -13,13 +13,19 @@ import {
 import {auth, provider} from "../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import Colors from '../assets/Colors';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs((props : { toTop : boolean }) => props)`
+position: sticky;
+left: 0;
+top: 0;
 display: flex;
 padding: 3vh 8vw;
 align-items: center;
-position: relative;
+transition: all .2s ease;
+background-color: ${(props) => props.toTop ? 'black' : 'white' };
+box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : '' };
 
 .left {
     flex: 1;
@@ -29,6 +35,29 @@ position: relative;
 
 > .center {
     flex: 6;
+    color: ${props => props.toTop ? 'white' : 'black'};
+
+    .nav-link {
+        position: relative;
+
+        &::after {
+            transition: all .2s ease-out;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            content: ' ';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            background-color: ${Colors.colorPrimary};
+            transform-origin: left;
+        }
+
+        &.active::after{
+            transform: scaleX(.6);
+        }
+    }
 
     > * {
         margin: 0 15px;
@@ -36,11 +65,14 @@ position: relative;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        opacity: .8;
         user-select: none;
 
         &:hover {
             opacity: 1;
+        }
+
+        &:not(.active) {
+            opacity: .8;
         }
     }
 }
@@ -49,8 +81,9 @@ position: relative;
     flex: 1;
 }
 `
-
-function Header() {
+type HeaderProps = {
+}
+const Header = () => {
 
     // Login/Registration modal popup
     const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
@@ -58,6 +91,15 @@ function Header() {
     const [loginError, setLoginError] = useState<string | undefined>();
     const [registerError, setRegisterError] = useState<string | undefined>();
     const [user, setUser] = useState<User | null>(null);
+    const [toTop, setToTop] = useState(true)
+     
+    useEffect(() => {
+        // Detect if the page is at the top to change header appearance
+        document.addEventListener('scroll', event => {
+            const scrolledToTop = window.scrollY === 0
+            setToTop(scrolledToTop)
+        })
+    }, [])
 
     const toggleLoginModal = () => {
         setIsLoginModalVisible(isLoginModalVisible => !isLoginModalVisible)
@@ -117,25 +159,29 @@ function Header() {
     };
 
     return (
-        <Wrapper>
+        <Wrapper toTop={toTop}>
 
             <div className="left">
-                <Logo/>
+                <Logo type={toTop ? 'light' : 'dark' }/>
             </div>
 
             <div className="center">
-                <Link to="/home" className="bold">Home</Link>
+                <NavLink to="/home"
+                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink>
                 <div>
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
-                    <span className="bold">Search</span>
+                    <span>Search</span>
                 </div>
-                <Link to="/about-us" className="bold">About us</Link>
-                <Link to="/contact-us" className="bold">Contact us</Link>
+                <NavLink to="/about-us"
+                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>About us</NavLink>
+                <NavLink to="/contact-us"
+                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Contact us</NavLink>
             </div>
 
             <div className="right">
 
                 <ProfileMenu
+                    type={toTop ? 'dark':'light'}
                     onCommand={a => {
                         switch (a) {
                             case 'login' :
