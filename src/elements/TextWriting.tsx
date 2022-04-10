@@ -1,8 +1,51 @@
 import { CSSProperties, useEffect, useState } from "react"
+import styled, { keyframes } from "styled-components"
 import Colors from "../assets/Colors"
 import '../assets/scss/elements/TextWriting.scss'
 import { random } from "../util/Utils"
 
+const selectorAnimator = keyframes`
+from {
+    visibility: hidden;
+    opacity: 0;
+}
+
+20% {
+    visibility: visible;
+    opacity: 1;
+}
+
+60% {
+    opacity: 1;
+}
+
+to {
+    visibility: hidden;
+    opacity: 0;
+}
+`
+
+const Wrapper = styled.div.attrs((props : { selectorBg : string }) => props)`
+display: inline-block;
+
+> * {
+    display: inline-block;
+}
+
+.animated-text {
+    position: relative;
+
+    &::after {
+        content: ' ';
+        position: absolute;
+        height: 100%;
+        background: ${props => props.selectorBg || 'black'};
+        width: 2px;
+        margin-left: 2px;
+        animation : ${selectorAnimator} .8s linear infinite;
+    }
+}
+`
 type TextWritingProps = {
     /**
      * Questo sarà il testo che non cambierà
@@ -81,13 +124,13 @@ const TextWriting = ({ invariantText, textToWrite,
     }
     
     return (
-        <div className="text-writing-wrapper" style={style}>
+        <Wrapper style={style} selectorBg={invariantTextColor}>
 
             <h1 style={{ color: invariantTextColor }}>{ invariantText }</h1>
             <h1 className="animated-text ml-5"
                 style={{ color: textToWriteColor }}>{ showingText }</h1>
 
-        </div>
+        </Wrapper>
     )
 }
 

@@ -20,7 +20,7 @@ const Home = () => {
             <div className="top-section">
 
                 <img src={image1} 
-                    style={{ objectFit : 'cover' }}
+                    style={{ objectFit : 'cover' }} width='100%'
                     height='100%' alt="Salento Mare" />
 
                 <TextWriting

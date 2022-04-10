@@ -17,7 +17,7 @@
             background: black;
             width: 2px;
             margin-left: 2px;
-            @include animate(pulse .8s linear infinite);
+            animation : pulse .8s linear infinite;
         }
     }
 }
