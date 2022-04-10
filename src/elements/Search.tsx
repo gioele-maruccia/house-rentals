@@ -14,14 +14,12 @@ function Search(){
         endDate: endDate,
         key: "selection",
     };
-
-    /*: { selection: { startDate: React.SetStateAction<Date>; endDate: React.SetStateAction<Date>; }; }*/
+    
     function handleSelect(ranges:any) {
         setStartDate(ranges.selection.startDate);
         setEndDate(ranges.selection.endDate);
     }
 
-    // @ts-ignore
     return(
         <div className='search'>
             <DateRangePicker 
