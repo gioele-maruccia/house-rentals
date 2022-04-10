@@ -13,10 +13,10 @@ import {
 import {auth, provider} from "../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Colors from '../assets/Colors';
 
-const Wrapper = styled.div.attrs((props : { toTop : boolean }) => props)`
+const Wrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
 position: sticky;
 left: 0;
 top: 0;
@@ -25,8 +25,8 @@ display: flex;
 padding: 3vh 8vw;
 align-items: center;
 transition: all .2s ease;
-background-color: ${(props) => props.toTop ? 'black' : 'white' };
-box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : '' };
+background-color: ${(props) => props.toTop ? 'black' : 'white'};
+box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : ''};
 
 .left {
     flex: 1;
@@ -82,8 +82,7 @@ box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : '' };
     flex: 1;
 }
 `
-type HeaderProps = {
-}
+type HeaderProps = {}
 const Header = () => {
 
     // Login/Registration modal popup
@@ -93,7 +92,7 @@ const Header = () => {
     const [registerError, setRegisterError] = useState<string | undefined>();
     const [user, setUser] = useState<User | null>(null);
     const [toTop, setToTop] = useState(true)
-     
+
     useEffect(() => {
         // Detect if the page is at the top to change header appearance
         document.addEventListener('scroll', event => {
@@ -156,33 +155,38 @@ const Header = () => {
 
 
     const logout = async () => {
-        await signOut(auth);
+        try {
+            const result = await signOut(auth);
+            console.log(result);
+        } catch (error: any) {
+            console.log(error.message);
+        }
     };
 
     return (
         <Wrapper toTop={toTop}>
 
             <div className="left">
-                <Logo type={toTop ? 'light' : 'dark' }/>
+                <Logo type={toTop ? 'light' : 'dark'}/>
             </div>
 
             <div className="center">
                 <NavLink to="/home"
-                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink>
+                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink>
                 <div>
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
                     <span>Search</span>
                 </div>
                 <NavLink to="/about-us"
-                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>About us</NavLink>
+                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>About us</NavLink>
                 <NavLink to="/contact-us"
-                    className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Contact us</NavLink>
+                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Contact us</NavLink>
             </div>
 
             <div className="right">
 
                 <ProfileMenu
-                    type={toTop ? 'dark':'light'}
+                    type={toTop ? 'dark' : 'light'}
                     onCommand={a => {
                         switch (a) {
                             case 'login' :
@@ -192,7 +196,7 @@ const Header = () => {
                                 toggleRegisterModal();
                                 break;
                             case 'logout':
-                                logout();
+                                logout().then(r => {});
                                 break;
                         }
                     }}
