@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { CSSProperties, useEffect, useState } from "react"
+import Colors from "../assets/Colors"
 import '../assets/scss/elements/TextWriting.scss'
 import { random } from "../util/Utils"
 
@@ -7,14 +8,21 @@ type TextWritingProps = {
      * Questo sarà il testo che non cambierà
      */
     invariantText : string
-
+    
     /**
      * Questo sarà il testo che verrà "animato" come scrittura
      */
     textToWrite : string[]
+
+    invariantTextColor? : string
+    textToWriteColor? : string
+    style? : CSSProperties
 }
 
-const TextWriting = ({ invariantText, textToWrite } : TextWritingProps) => {
+const TextWriting = ({ invariantText, textToWrite,
+    invariantTextColor = 'black', textToWriteColor = Colors.colorPrimary,
+    style 
+    } : TextWritingProps) => {
 
     const [index, setIndex] = useState(0)
 
@@ -73,10 +81,11 @@ const TextWriting = ({ invariantText, textToWrite } : TextWritingProps) => {
     }
     
     return (
-        <div className="text-writing-wrapper">
+        <div className="text-writing-wrapper" style={style}>
 
-            <h1>{ invariantText }</h1>
-            <h1 className="col-primary animated-text ml-5">{ showingText }</h1>
+            <h1 style={{ color: invariantTextColor }}>{ invariantText }</h1>
+            <h1 className="animated-text ml-5"
+                style={{ color: textToWriteColor }}>{ showingText }</h1>
 
         </div>
     )

@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './assets/scss/App.scss';
 import Header from './elements/Header';
 import { AboutUs } from './pages/AboutUs';
@@ -7,11 +8,13 @@ import { DevPage } from './pages/Dev';
 import Home from "./pages/Home";
 
 const App = () => {
+    const [navbarType, setNavbarType] = useState('dark' as 'dark' | 'light')
+   
 
     return (
         <BrowserRouter>
-            <div className="App">
-                <Header/>
+            <div className="App" style={{ height: '200vh'}}>
+                <Header />
 
                 <Routes>
                     <Route path='/home' element={<Home />} /> 
