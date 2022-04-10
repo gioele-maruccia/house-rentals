@@ -13,14 +13,6 @@
     width: 300px;
 }
 
-/* Search date button layout */
-.banner_searchButton{
-    background-color: white;
-    font-weight: 900;
-    text-transform: inherit;
-    color: lightcoral;
-}
-
 /* Explore button layout of info banner */
 .banner_info > button{
     background-color: lightcoral;
@@ -38,4 +30,19 @@
 /* Info banner description layout */
 .banner_info > h4{
     margin-top: 10px;
+}
+
+
+/* Info banner search */
+.banner_search{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Search date button layout */
+.banner_searchButton{
+    background-color: white;
+    font-weight: 900;
+    text-transform: inherit;
+    color: lightcoral;
 }
