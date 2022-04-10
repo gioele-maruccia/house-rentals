@@ -54,6 +54,7 @@ z-index: 999999;
     a {
         text-decoration: none;
         color: inherit;
+        display: block;
     }
 }
 `
