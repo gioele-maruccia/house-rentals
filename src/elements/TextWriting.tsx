@@ -1,7 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import Colors from "../assets/Colors"
-import '../assets/scss/elements/TextWriting.scss'
 import { random } from "../util/Utils"
 
 const selectorAnimator = keyframes`

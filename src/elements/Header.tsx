@@ -20,6 +20,7 @@ const Wrapper = styled.div.attrs((props : { toTop : boolean }) => props)`
 position: sticky;
 left: 0;
 top: 0;
+z-index: 99999999;
 display: flex;
 padding: 3vh 8vw;
 align-items: center;
