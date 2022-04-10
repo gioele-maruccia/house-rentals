@@ -16,13 +16,12 @@ function Banner(){
             </div>
 
             <div className='banner_search'>
-                <Button
-                    onClick={() =>
+                <Button onClick={() =>
                         setShowSearch(!showSearch)}
                     className='banner_searchButton'
                     variant='outlined'>Data
-                    {showSearch && <Search />}
                 </Button>
+                {showSearch && <Search />}
             </div>
 
         </div>
