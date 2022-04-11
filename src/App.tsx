@@ -12,6 +12,7 @@ const App = () => {
    
 
     return (
+        <div>
         <BrowserRouter>
             <div className="App" style={{ height: '200vh'}}>
                 <Header />
@@ -19,12 +20,15 @@ const App = () => {
                 <Routes>
                     <Route path='/home' element={<Home />} /> 
                     <Route path='/contact-us' element={<ContactUs />} /> 
-                    <Route path='/about-us' element={<AboutUs />} /> 
-                    
+                    <Route path='/about-us' element={<AboutUs />} />
                     <Route path='/DEV' element={<DevPage />} /> 
                 </Routes>
             </div>
         </BrowserRouter>
+
+        { /* Cards */ }
+        { /* Footer */}
+        </div>
     );
 }
 

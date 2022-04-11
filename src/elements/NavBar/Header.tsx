@@ -12,76 +12,9 @@ import {
 } from "firebase/auth";
 import {auth, provider} from "../../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
-import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
-import Colors from '../../assets/Colors';
+import {Wrapper} from "./NavBar.styles";
 
-const Wrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
-position: sticky;
-left: 0;
-top: 0;
-z-index: 99999999;
-display: flex;
-padding: 3vh 8vw;
-align-items: center;
-transition: all .2s ease;
-background-color: ${(props) => props.toTop ? 'black' : 'white'};
-box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : ''};
-
-.left {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-}
-
-> .center {
-    flex: 6;
-    color: ${props => props.toTop ? 'white' : 'black'};
-
-    .nav-link {
-        position: relative;
-
-        &::after {
-            transition: all .2s ease-out;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            content: ' ';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            border-radius: 5px;
-            background-color: ${Colors.colorPrimary};
-            transform-origin: left;
-        }
-
-        &.active::after{
-            transform: scaleX(.6);
-        }
-    }
-
-    > * {
-        margin: 0 15px;
-        display: inline-block;
-        cursor: pointer;
-        text-decoration: none;
-        color: inherit;
-        user-select: none;
-
-        &:hover {
-            opacity: 1;
-        }
-
-        &:not(.active) {
-            opacity: .8;
-        }
-    }
-}
-
-.right {
-    flex: 1;
-}
-`
 type HeaderProps = {}
 const Header = () => {
 
@@ -143,7 +76,6 @@ const Header = () => {
         }
     };
 
-    // GOOGLE LOGIN
     const onLoginWithGoogle = async () => {
         try {
             const result = await signInWithPopup(auth, provider);
@@ -152,7 +84,6 @@ const Header = () => {
             console.log(error.message);
         }
     };
-
 
     const logout = async () => {
         try {
@@ -196,7 +127,8 @@ const Header = () => {
                                 toggleRegisterModal();
                                 break;
                             case 'logout':
-                                logout().then(r => {});
+                                logout().then(r => {
+                                });
                                 break;
                         }
                     }}
@@ -214,10 +146,6 @@ const Header = () => {
                                onClose={toggleRegisterModal}
                                onRegisterRequested={onRegisterRequest}>
                 </RegisterModal>
-
-                {/* <h4> User Logged In: </h4>
-                    {user?.email}
-                    <button onClick={logout}> Sign Out</button> */}
 
             </div>
 

@@ -1,80 +1,12 @@
 import React, {CSSProperties, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
-import {Hamburger} from "../Hamburger";
+import {Hamburger} from "./Hamburger";
 import { 
     User
 } from "firebase/auth";
 import { NavLink } from "react-router-dom";
-import Colors from "../../assets/Colors";
+import {ProfileWrapper, Menu} from "./NavBar.styles";
 
-//#region STYLES
-const Wrapper = styled.div.attrs((props : { type : 'dark' | 'light'}) => props)`
-display: inline-block;
-background-color: ${props => props.type === 'light' ? '#f7f7f7' : '#121212'};
-border-radius: 10px;
-position: relative;
-padding: 10px 15px;
-transition: all .2s ease-out;
-color: ${props => props.type === 'light' ? 'black' : '#fffffff0'};
-
-i {
-    font-size: 25px;
-}
-`
-const Menu = styled.div.attrs((props : { type : 'dark' | 'light'}) => props)`
-position: absolute;
-top: 105%;
-right: 0;
-width: 100%;
-min-width: 250px;
-box-sizing: border-box;
-background-color: inherit;
-border-radius: inherit;
-padding: 10px 0;
-z-index: 99999999999;
-color: ${props => props.type==='light' ? 'black' : 'white'};
-
-> div {
-    text-align: left;
-    user-select: none;
-    cursor : pointer;
-    padding: 10px 15px;
-    
-    &:hover {
-        background-color: ${props => props.type==='light' ? '#f1f1f1' : '#1a1a1a'};
-    }
-
-    &.sep {
-        margin: 5px 0;
-        width: 100%;
-        background-color: ${props => props.type==='light' ? '#ebebeb' : '#1a1a1a'};
-        height: 2px;
-        border-radius: 5px;
-        padding:0;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-    }
-
-    .nav-link {
-        position: relative;
-
-        &.active::after {
-            content: ' ';
-            position: absolute;
-            left: -15px;
-            height: 100%;
-            top: 0
-            border-radius: 5px;
-            width: 3px;
-            background-color: ${Colors.colorPrimary};
-        }
-    }
-}
-`
 //#endregion
 
 type ActionType = 'login' | 'signup' | 'logout' 
@@ -110,7 +42,7 @@ const ProfileMenu = ({
 
 
     return (
-        <Wrapper style={style} ref={wrapperRef} type={type}>
+        <ProfileWrapper style={style} ref={wrapperRef} type={type}>
 
             <div className="row center nowrap">
                 {user != null && <h4> Welcome {user?.email}</h4> }
@@ -147,7 +79,7 @@ const ProfileMenu = ({
                     </div>
                 </Menu>
             }
-        </Wrapper>
+        </ProfileWrapper>
     )
 }
 
