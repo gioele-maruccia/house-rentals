@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Logo} from './Logo';
-import LoginModal, {LoginFunction} from "./ModalPopup/LoginModal";
-import RegisterModal, {RegisterFunction} from "./ModalPopup/RegisterModal";
+import LoginModal, {LoginFunction} from "../ModalPopup/LoginModal";
+import RegisterModal, {RegisterFunction} from "../ModalPopup/RegisterModal";
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
@@ -10,11 +10,11 @@ import {
     signInWithPopup,
     User
 } from "firebase/auth";
-import {auth, provider} from "../firebase-config";
+import {auth, provider} from "../../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
-import Colors from '../assets/Colors';
+import Colors from '../../assets/Colors';
 
 const Wrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
 position: sticky;

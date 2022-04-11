@@ -1,11 +1,11 @@
 import React, {CSSProperties, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
-import {Hamburger} from "./Hamburger";
-import {
+import {Hamburger} from "../Hamburger";
+import { 
     User
 } from "firebase/auth";
 import { NavLink } from "react-router-dom";
-import Colors from "../assets/Colors";
+import Colors from "../../assets/Colors";
 
 //#region STYLES
 const Wrapper = styled.div.attrs((props : { type : 'dark' | 'light'}) => props)`
