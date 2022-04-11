@@ -1,17 +1,20 @@
 import styled from 'styled-components'
 import Colors from "../../assets/Colors";
 
-export const Wrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
-position: sticky;
-left: 0;
-top: 0;
+export const NavBarWrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
+background-color: ${(props) => props.toTop ? 'black' : 'white'};
+box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : ''};
+display: flex; 
+flex-direction: column;
 z-index: 99999999;
+
+`;
+
+export const LinksWrapper = styled.div.attrs((props: { toTop: boolean }) => props)`
 display: flex;
 padding: 3vh 8vw;
 align-items: center;
 transition: all .2s ease;
-background-color: ${(props) => props.toTop ? 'black' : 'white'};
-box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : ''};
 
 .left {
     flex: 1;
@@ -19,7 +22,7 @@ box-shadow: ${props => !props.toTop ? '2px 2px 9px 0px #0000000f' : ''};
     align-items: flex-start;
 }
 
-> .center {
+.center {
     flex: 6;
     color: ${props => props.toTop ? 'white' : 'black'};
 
@@ -99,9 +102,32 @@ export const HamWrapper = styled.div`
     transform : scaleX(1);
 }
 `
+export const SearchWrapper = styled.div`
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    min-width: fit-content;
+    
+    > div {
+        display: flex;
+        padding: 10px;
+        height: 30px;
+        background-color: white;
+        border-radius: 999px;
+        border: 1px solid lightgray;
+        align-items: center;
+        
+            > input {
+                border: none; 
+                width: 300px;
+            }
+    }
+`;
 
 //#region STYLES
-export const ProfileWrapper = styled.div.attrs((props : { type : 'dark' | 'light'}) => props)`
+export const ProfileWrapper = styled.div.attrs((props: { type: 'dark' | 'light' }) => props)`
 display: inline-block;
 background-color: ${props => props.type === 'light' ? '#f7f7f7' : '#121212'};
 border-radius: 10px;
@@ -114,7 +140,7 @@ i {
     font-size: 25px;
 }
 `
-export const Menu = styled.div.attrs((props : { type : 'dark' | 'light'}) => props)`
+export const Menu = styled.div.attrs((props: { type: 'dark' | 'light' }) => props)`
 position: absolute;
 top: 105%;
 right: 0;
@@ -125,7 +151,7 @@ background-color: inherit;
 border-radius: inherit;
 padding: 10px 0;
 z-index: 99999999999;
-color: ${props => props.type==='light' ? 'black' : 'white'};
+color: ${props => props.type === 'light' ? 'black' : 'white'};
 
 > div {
     text-align: left;
@@ -134,13 +160,13 @@ color: ${props => props.type==='light' ? 'black' : 'white'};
     padding: 10px 15px;
     
     &:hover {
-        background-color: ${props => props.type==='light' ? '#f1f1f1' : '#1a1a1a'};
+        background-color: ${props => props.type === 'light' ? '#f1f1f1' : '#1a1a1a'};
     }
 
     &.sep {
         margin: 5px 0;
         width: 100%;
-        background-color: ${props => props.type==='light' ? '#ebebeb' : '#1a1a1a'};
+        background-color: ${props => props.type === 'light' ? '#ebebeb' : '#1a1a1a'};
         height: 2px;
         border-radius: 5px;
         padding:0;

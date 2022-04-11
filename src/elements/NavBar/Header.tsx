@@ -13,7 +13,7 @@ import {
 import {auth, provider} from "../../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import {NavLink} from 'react-router-dom';
-import {Wrapper} from "./NavBar.styles";
+import {LinksWrapper, SearchWrapper, NavBarWrapper} from "./NavBar.styles";
 
 type HeaderProps = {}
 const Header = () => {
@@ -95,61 +95,68 @@ const Header = () => {
     };
 
     return (
-        <Wrapper toTop={toTop}>
-
-            <div className="left">
-                <Logo type={toTop ? 'light' : 'dark'}/>
-            </div>
-
-            <div className="center">
-                <NavLink to="/home"
-                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink>
-                <div>
-                    <i className="fa-solid fa-magnifying-glass mr-5"></i>
-                    <span>Search</span>
+        <NavBarWrapper toTop={toTop}>
+            <LinksWrapper toTop={toTop}>
+                <div className="left">
+                    <Logo type={toTop ? 'light' : 'dark'}/>
                 </div>
-                <NavLink to="/about-us"
-                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>About us</NavLink>
-                <NavLink to="/contact-us"
-                         className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Contact us</NavLink>
-            </div>
+                <div className="center">
+                    <NavLink to="/home"
+                             className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink>
+                    <div>
+                        <i className="fa-solid fa-magnifying-glass mr-5"></i>
+                        <span>Search</span>
+                    </div>
+                    <NavLink to="/about-us"
+                             className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>About us</NavLink>
+                    <NavLink to="/contact-us"
+                             className={({isActive}) => `nav-link ${isActive ? 'active' : ''}`}>Contact us</NavLink>
+                </div>
+                <div className="right">
 
-            <div className="right">
+                    <ProfileMenu
+                        type={toTop ? 'dark' : 'light'}
+                        onCommand={a => {
+                            switch (a) {
+                                case 'login' :
+                                    toggleLoginModal();
+                                    break;
+                                case 'signup' :
+                                    toggleRegisterModal();
+                                    break;
+                                case 'logout':
+                                    logout().then(r => {
+                                    });
+                                    break;
+                            }
+                        }}
+                        user={user}/>
 
-                <ProfileMenu
-                    type={toTop ? 'dark' : 'light'}
-                    onCommand={a => {
-                        switch (a) {
-                            case 'login' :
-                                toggleLoginModal();
-                                break;
-                            case 'signup' :
-                                toggleRegisterModal();
-                                break;
-                            case 'logout':
-                                logout().then(r => {
-                                });
-                                break;
-                        }
-                    }}
-                    user={user}/>
+                </div>
+            </LinksWrapper>
 
-                <LoginModal loginError={loginError}
-                            isModalVisible={isLoginModalVisible}
-                            onClose={toggleLoginModal}
-                            onLoginRequested={onLoginRequest}
-                            onLoginWithGoogleRequested={onLoginWithGoogle}>
-                </LoginModal>
+            <SearchWrapper>
+                <div>
+                    <input type="text"/>
+                    <i className="fa-solid fa-magnifying-glass mr-5"></i>
+                </div>
+            </SearchWrapper>
 
-                <RegisterModal registerError={registerError}
-                               isModalVisible={isRegisterModalVisible}
-                               onClose={toggleRegisterModal}
-                               onRegisterRequested={onRegisterRequest}>
-                </RegisterModal>
 
-            </div>
+            <LoginModal loginError={loginError}
+                        isModalVisible={isLoginModalVisible}
+                        onClose={toggleLoginModal}
+                        onLoginRequested={onLoginRequest}
+                        onLoginWithGoogleRequested={onLoginWithGoogle}>
+            </LoginModal>
 
-        </Wrapper>
+            <RegisterModal registerError={registerError}
+                           isModalVisible={isRegisterModalVisible}
+                           onClose={toggleRegisterModal}
+                           onRegisterRequested={onRegisterRequest}>
+            </RegisterModal>
+
+        </NavBarWrapper>
     )
 }
 
