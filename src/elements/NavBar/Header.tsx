@@ -138,12 +138,12 @@ const Header = () => {
 
             <SearchWrapper>
                 <div>
-                    <Button className='button_searchLocation' variant='outlined'>Dove</Button>
+                    <Button className='button_searchLocation'>Dove</Button>
                     <view style={{flex: 1, marginRight: 3, marginLeft: 3}}>
-                        <Button className='button_searchData' variant='outlined'>Calendario</Button>
+                        <Button className='button_searchData'>Calendario</Button>
                     </view>
                     <view style={{flex: 1, marginRight: 5}}>
-                        <Button className='button_searchGuest' variant='outlined'>Ospiti</Button>
+                        <Button className='button_searchGuest'>Ospiti</Button>
                     </view>
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
                 </div>
