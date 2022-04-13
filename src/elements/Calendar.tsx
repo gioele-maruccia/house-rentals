@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import '../assets/scss/Search.scss';
+import '../assets/scss/Calendar.scss';
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { DateRange } from 'react-date-range';
+import {DateRange} from 'react-date-range';
 
-function Search(){
+function Calendar() {
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -14,13 +14,13 @@ function Search(){
         endDate: endDate,
         key: "selection",
     };
-    
-    function handleSelect(ranges:any) {
+
+    function handleSelect(ranges: any) {
         setStartDate(ranges.selection.startDate);
         setEndDate(ranges.selection.endDate);
     }
 
-    return(
+    return (
         <div className='search'>
             <DateRange
                 ranges={[selectionRange]} onChange={handleSelect}
@@ -29,4 +29,5 @@ function Search(){
     )
 }
 
-export default Search
+export default Calendar
+

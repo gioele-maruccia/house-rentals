@@ -15,6 +15,7 @@ import {ProfileMenu} from './ProfileMenu';
 import {NavLink} from 'react-router-dom';
 import {LinksWrapper, SearchWrapper, NavBarWrapper} from "./NavBar.styles";
 import {Button} from "@mui/material";
+import Calendar from "../Calendar";
 
 type HeaderProps = {}
 const Header = () => {
@@ -95,6 +96,8 @@ const Header = () => {
         }
     };
 
+    const [showSearch, setShowSearch] = useState(false);
+
     return (
         <NavBarWrapper toTop={toTop}>
             <LinksWrapper toTop={toTop}>
@@ -140,7 +143,8 @@ const Header = () => {
                 <div>
                     <Button className='button_searchLocation'>Dove</Button>
                     <view style={{flex: 1, marginRight: 3, marginLeft: 3}}>
-                        <Button className='button_searchData'>Calendario</Button>
+                        <Button className='button_searchData' onClick={() =>
+                            setShowSearch(!showSearch)}>Calendario</Button>
                     </view>
                     <view style={{flex: 1, marginRight: 5}}>
                         <Button className='button_searchGuest'>Ospiti</Button>
@@ -148,6 +152,9 @@ const Header = () => {
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
                 </div>
             </SearchWrapper>
+            <view style={{flex: 1, marginTop: 5}}>
+                {showSearch && <Calendar />}
+            </view>
 
 
             <LoginModal loginError={loginError}
