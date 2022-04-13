@@ -14,6 +14,7 @@ import {auth, provider} from "../../firebase-config";
 import {ProfileMenu} from './ProfileMenu';
 import {NavLink} from 'react-router-dom';
 import {LinksWrapper, SearchWrapper, NavBarWrapper} from "./NavBar.styles";
+import {Button} from "@mui/material";
 
 type HeaderProps = {}
 const Header = () => {
@@ -137,7 +138,13 @@ const Header = () => {
 
             <SearchWrapper>
                 <div>
-                    <input type="text"/>
+                    <Button className='button_searchLocation' variant='outlined'>Dove</Button>
+                    <view style={{flex: 1, marginRight: 3, marginLeft: 3}}>
+                        <Button className='button_searchData' variant='outlined'>Calendario</Button>
+                    </view>
+                    <view style={{flex: 1, marginRight: 5}}>
+                        <Button className='button_searchGuest' variant='outlined'>Ospiti</Button>
+                    </view>
                     <i className="fa-solid fa-magnifying-glass mr-5"></i>
                 </div>
             </SearchWrapper>
