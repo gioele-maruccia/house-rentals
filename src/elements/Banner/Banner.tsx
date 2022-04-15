@@ -17,7 +17,9 @@ function Banner() {
                     invariantText='We are '
                     textToWrite={['building.  ', 'creating. ', 'working.  ']}
                 />
+                <div>
                 <Button type='light' onClick={()=>0}>Explore</Button>
+                </div>
             </BannerInfo>
         </div>
     )

@@ -9,3 +9,12 @@ export const HomeWrapper = styled.div`
     background: black;
 }
 `
+
+export const CardWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 10vh;
+    margin-right: 10vh;
+`
