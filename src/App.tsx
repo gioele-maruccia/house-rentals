@@ -5,7 +5,7 @@ import Header from './elements/NavBar/Header';
 import { AboutUs } from './pages/AboutUs';
 import { ContactUs } from './pages/ContactUs';
 import { DevPage } from './pages/Dev';
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 const App = () => {
     const [navbarType, setNavbarType] = useState('dark' as 'dark' | 'light')

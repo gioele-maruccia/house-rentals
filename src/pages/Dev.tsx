@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Banner from "../Banner"
+import Banner from "../elements/Banner/Banner"
 import { Button } from "../elements/Button"
 import { Input } from "../elements/Input"
 import { TextWriting } from "../elements/TextWriting"

@@ -1,6 +1,7 @@
 /* Main banner layout */
 .banner{
-    background-color: darkgrey; /* Add image, slide or video URL */
+    background: url(../images/img_home.png);
+    background-position: center;
     height: 50vh;
     position: relative;
 }
