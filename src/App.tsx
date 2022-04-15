@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './assets/scss/App.scss';
 import Header from './elements/NavBar/Header';
 import { AboutUs } from './pages/AboutUs';
@@ -18,6 +18,7 @@ const App = () => {
                 <Header />
 
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path='/home' element={<Home />} /> 
                     <Route path='/contact-us' element={<ContactUs />} /> 
                     <Route path='/about-us' element={<AboutUs />} />
