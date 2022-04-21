@@ -3,6 +3,7 @@ import Banner from "../elements/Banner/Banner"
 import { Button } from "../elements/Button"
 import { Input } from "../elements/Input"
 import { TextWriting } from "../elements/TextWriting"
+import Calendar2 from "../elements/Calendar2";
 
 const DevPage = () => {
     const [inputValue1, setInputValue1] = useState('')
@@ -47,6 +48,9 @@ const DevPage = () => {
                 <Button type='warning' onClick={() => alert('Clicked')}>CLICK ME</Button>
                 <Button type='error' onClick={() => alert('Clicked')}>CLICK ME</Button>
             </div>
+
+            <Calendar2/>
+
         </div>
     )
 }
