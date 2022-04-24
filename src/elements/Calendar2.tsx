@@ -1,7 +1,7 @@
 import React from "react";
 import '../assets/scss/Calendar.scss';
 import "react-dates/initialize";
-import { DateRangePicker } from "react-dates";
+import {DateRangePicker} from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import moment from 'moment';
 import 'moment/locale/it'
@@ -19,8 +19,11 @@ class Calendar2 extends React.Component {
         endDateFormatted: null,
         startDateFormatted: null,
         focusedInput: null,
+        startDatePlaceholderText: 'Check-in',
+        endDatePlaceholderText: 'Check-out',
     };
-    hundleDateChange(startDate:any, endDate:any) {
+
+    handleDateChange(startDate:any, endDate:any) {
         this.setState(() => ({
             endDate,
             startDate,
@@ -40,44 +43,42 @@ class Calendar2 extends React.Component {
     render() {
         return (
             <div className="Calendar2">
-                {/*
-                <pre style={{ textAlign: "left" }}>
-                    <p> start date : {JSON.stringify(this.state.startDate)} </p>
-                    <p> start date Formatted: {this.state.startDateFormatted} </p>
-                    <p> end date : {JSON.stringify(this.state.endDate)} </p>
-                    <p> end date Formatted : {this.state.endDateFormatted} </p>
-                </pre>
-                */}
 
                 <Mobile>
                     <DateRangePicker
+                        startDatePlaceholderText={this.state.startDatePlaceholderText}
+                        endDatePlaceholderText={this.state.endDatePlaceholderText}
                         startDate={this.state.startDate}
                         startDateId="start_date_id"
                         endDate={this.state.endDate}
                         endDateId="end_date_id"
                         onDatesChange={({ startDate, endDate }) =>
-                            this.hundleDateChange(startDate, endDate)
+                            this.handleDateChange(startDate, endDate)
                         }
                         focusedInput={this.state.focusedInput}
                         onFocusChange={(focusedInput) => this.setState({ focusedInput })}
                         numberOfMonths={1}
                         orientation="horizontal"
+                        showClearDates
                     />
                 </Mobile>
 
                 <Default>
                     <DateRangePicker
+                        startDatePlaceholderText={this.state.startDatePlaceholderText}
+                        endDatePlaceholderText={this.state.endDatePlaceholderText}
                         startDate={this.state.startDate}
                         startDateId="start_date_id"
                         endDate={this.state.endDate}
                         endDateId="end_date_id"
                         onDatesChange={({ startDate, endDate }) =>
-                            this.hundleDateChange(startDate, endDate)
+                            this.handleDateChange(startDate, endDate)
                         }
                         focusedInput={this.state.focusedInput}
                         onFocusChange={(focusedInput) => this.setState({ focusedInput })}
                         numberOfMonths={2}
                         orientation="horizontal"
+                        showClearDates
                     />
                 </Default>
             </div>
